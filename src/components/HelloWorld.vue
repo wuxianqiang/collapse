@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1>JS实现动画</h1>
     <collapse>
       <collapse-item>
         <template slot="title">
@@ -17,17 +17,36 @@
         <div>在界面中一致：所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。</div>
       </collapse-item>
     </collapse>
+    <h1>CSS实现动画</h1>
+    <collapse>
+      <collapse-base>
+        <template slot="title">
+          一致性 Consistency<i class="header-icon el-icon-info"></i>
+        </template>
+        <div>与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；</div>
+        <div>在界面中一致：所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。</div>
+      </collapse-base>
+      <collapse-base>
+        <template slot="title">
+          一致性 Consistency<i class="header-icon el-icon-info"></i>
+        </template>
+        <div>与现实生活一致：与现实生活的流程、逻辑保持一致，遵循用户习惯的语言和概念；</div>
+        <div>在界面中一致：所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。</div>
+      </collapse-base>
+    </collapse>
   </div>
 </template>
 
 <script>
 import Collapse from './Collapse'
 import CollapseItem from './CollapseItem'
+import CollapseBase from './CollapseBase'
 
 export default {
   components: {
     Collapse,
-    CollapseItem
+    CollapseItem,
+    CollapseBase
   },
   name: 'HelloWorld',
   props: {

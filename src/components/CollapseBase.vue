@@ -26,6 +26,9 @@ export default {
       isShow: false
     }
   },
+  created () {
+    this.elTransition = '0.3s height ease-in-out'
+  },
   methods: {
     handleClick () {
       this.$parent.changeState(this._uid)
@@ -37,21 +40,11 @@ export default {
     enter (el, done) {
       // 动画过程
       let height = el.scrollHeight
-      let step = height / 300 * 20
-      let distance = 0
-      let change = () => {
-        distance += step
-        if (distance < height) {
-          el.style.height = `${distance}px`
-          setTimeout(() => {
-            requestAnimationFrame(change)
-          }, 20)
-        } else {
-          el.style.height = `${height}px`
-          done()
-        }
-      }
-      requestAnimationFrame(change)
+      el.style.transition = this.elTransition
+      el.style.height = `${height}px`
+      el.addEventListener('transitionend', () => {
+        done()
+      })
     },
     afterEnter (el) {
       // 动画之后
@@ -59,21 +52,10 @@ export default {
     },
     leave (el, done) {
       // 动画过程
-      let height = el.scrollHeight
-      let step = height / 300 * 20
-      let change = () => {
-        height -= step
-        if (height > 0) {
-          el.style.height = `${height}px`
-          setTimeout(() => {
-            requestAnimationFrame(change)
-          }, 20)
-        } else {
-          el.style.height = 0
-          done()
-        }
-      }
-      requestAnimationFrame(change)
+      el.style.height = 0
+      el.addEventListener('transitionend', () => {
+        done()
+      })
     },
     afterLeave (el) {
       console.log('关闭动画完成')
@@ -87,4 +69,3 @@ export default {
   overflow: hidden;
 }
 </style>
-
