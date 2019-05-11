@@ -41,6 +41,8 @@
         <div>在界面中一致：所有的元素和结构需保持一致，比如：设计样式、图标和文本、元素的位置等。</div>
       </div>
     </collapse-abstract>
+    <button @click="handelAdd">飞飞</button>
+    <shop-cart ref="cart"></shop-cart>
   </div>
 </template>
 
@@ -49,17 +51,24 @@ import Collapse from './Collapse'
 import CollapseItem from './CollapseItem'
 import CollapseBase from './CollapseBase'
 import CollapseAbstract from './CollapseAbstract'
+import ShopCart from './ShopCart'
 
 export default {
   components: {
     Collapse,
     CollapseItem,
     CollapseBase,
-    CollapseAbstract
+    CollapseAbstract,
+    ShopCart
   },
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  methods: {
+    handelAdd (e) {
+      this.$refs.cart.drop(e.target)
+    }
   }
 }
 </script>
