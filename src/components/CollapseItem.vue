@@ -43,9 +43,7 @@ export default {
         distance += step
         if (distance < height) {
           el.style.height = `${distance}px`
-          setTimeout(() => {
-            requestAnimationFrame(change)
-          }, 20)
+          requestAnimationFrame(change)
         } else {
           el.style.height = `${height}px`
           done()
@@ -65,9 +63,7 @@ export default {
         height -= step
         if (height > 0) {
           el.style.height = `${height}px`
-          setTimeout(() => {
-            requestAnimationFrame(change)
-          }, 20)
+          requestAnimationFrame(change)
         } else {
           el.style.height = 0
           done()
